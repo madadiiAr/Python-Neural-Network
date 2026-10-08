@@ -33,14 +33,24 @@ if __name__ == "__main__":
 	([1, 1], [0])
 	]
 
-	nn = Neural_Network(2, [2], 1, activation="leaky-relu")
-	nn.Train(TABLE, epoches=100000, lr=0.05)
+	nn = Neural_Network(2, [5, 5], 1, activation="leaky-relu")
+	nn.Train(TABLE, epoches=300000, lr=0.05)
 
 	print("--- predictions ---")
 	for inp, target in TABLE:
 		out = nn.Forward(inp)[0]
 		print(f"input {inp}  target {target[0]}  output {out:.4f}")
 
+```
+Example output :
+```text
+  
+--- predictions ---
+input [0, 0]  target 0  output 0.0000
+input [0, 1]  target 1  output 1.0000
+input [1, 0]  target 1  output 1.0000
+input [1, 1]  target 0  output 0.0000
+  
 ```
 
 ## Data format
