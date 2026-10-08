@@ -159,13 +159,13 @@ class Neural_Network() :
                     self.weights[Layer-1][Neuron][inp] -= self.lr * self.deltas[Layer][Neuron] * self.last_a[Layer-1][inp]
                 self.biases[Layer-1][Neuron] -= self.lr * self.deltas[Layer][Neuron]
                     
-    def Train(self, data, epoches, lr) :
+    def Train(self, data, epoches, learning_rate) :
         """
         data : [[case1: [input1, input2, ...], [expected_outputs]], [case2], ...]
         """
-        
+        self.lr = learning_rate
         for e in range(epoches) :
             for c in data :
                 inputs, outputs = c
                 self.Forward(inputs)
-                self.Backward(outputs, lr)
+                self.Backward(outputs, self.lr)
