@@ -3,7 +3,7 @@
 ## About
 
 A Neural Network written in Python.  
-No dependencies -- pure python.   
+No dependencies -- pure Python.   
 ## Quick Start
 
 First clone this repository or download the `NeuralNetwork.py` file and put it alongside your code.  
@@ -129,7 +129,7 @@ Trains the network on the given data.
 
 ### .Forward(...)
 
-Moves inputs accross network and returns the results.
+Moves inputs across network and returns the results.
 
 | Parameter | Type        | Description                        |
 | --------- | ----------- | ---------------------------------- |
@@ -143,17 +143,18 @@ Returns a list[float] with the length equal to `output_size`
 
 ### .Backward(...)
 
-Backpropagates the error from the last forward pass and updates weights and biases in place.
+Back propagates the error from the last forward pass and updates weights and biases in place.
 
 | Parameter       | Type        | Description                             |
 | --------------- | ----------- | --------------------------------------- |
 | `answers`       | list[float] | Expected answers, one per output neuron |
 | `learning_rate` | float       | Learning rate                           |
+  
 `answers`: length must match `output_size`
 returns `None`,  updates weights and biases in place.
 
 >[!NOTE]
->`output_size`: look at [Constructor](#constructor)[^2].
+>`output_size`: see [Constructor](#constructor) section[^2].
 
 >[!WARNING]
 >`Forward` must be called before `Backward`. It uses the cached values from the last forward pass.
