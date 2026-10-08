@@ -169,11 +169,3 @@ class Neural_Network() :
                 inputs, outputs = c
                 self.Forward(inputs)
                 self.Backward(outputs, lr)
-                
-if __name__ == "__main__":
-    TABLE = [
-    ([0, 0], [0]),   # sum=0, carry=0
-    ([0, 1], [1]),
-    ([1, 0], [1]),
-    ([1, 1], [0]),   # sum=0, carry=1
-]
