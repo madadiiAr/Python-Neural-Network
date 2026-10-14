@@ -3,17 +3,14 @@
 ## About
 
 A Neural Network written in Python.  
-<<<<<<< HEAD
-No dependencies -- pure Python.   
-=======
-No dependencies -- pure python.   
->>>>>>> 2e3b4ef (Added numpy compution into file NeuralNetworkNumpy.py)
+No dependencies -- pure Python.  
+
 ## Quick Start
 
 First clone this repository or download the `NeuralNetwork.py` file and put it alongside your code.  
 Your project must look like this :
 
-```
+```text
 
 My-Project
 ├── NeuralNetwork.py
@@ -37,13 +34,8 @@ if __name__ == "__main__":
 	([1, 1], [0])
 	]
 
-<<<<<<< HEAD
 	nn = Neural_Network(2, [5, 5], 1, activation="leaky-relu")
 	nn.Train(TABLE, epoches=300000, lr=0.05)
-=======
-	nn = Neural_Network(2, [2], 1, activation="leaky-relu")
-	nn.Train(TABLE, epoches=100000, lr=0.05)
->>>>>>> 2e3b4ef (Added numpy compution into file NeuralNetworkNumpy.py)
 
 	print("--- predictions ---")
 	for inp, target in TABLE:
@@ -51,7 +43,6 @@ if __name__ == "__main__":
 		print(f"input {inp}  target {target[0]}  output {out:.4f}")
 
 ```
-<<<<<<< HEAD
 Example output :
 ```text
   
@@ -62,8 +53,6 @@ input [1, 0]  target 1  output 1.0000
 input [1, 1]  target 0  output 0.0000
   
 ```
-=======
->>>>>>> 2e3b4ef (Added numpy compution into file NeuralNetworkNumpy.py)
 
 ## Data format
 
@@ -141,11 +130,7 @@ Trains the network on the given data.
 
 ### .Forward(...)
 
-<<<<<<< HEAD
 Moves inputs across network and returns the results.
-=======
-Moves inputs accross network and returns the results.
->>>>>>> 2e3b4ef (Added numpy compution into file NeuralNetworkNumpy.py)
 
 | Parameter | Type        | Description                        |
 | --------- | ----------- | ---------------------------------- |
@@ -159,20 +144,13 @@ Returns a list[float] with the length equal to `output_size`
 
 ### .Backward(...)
 
-<<<<<<< HEAD
-Back propagates the error from the last forward pass and updates weights and biases in place.
-=======
 Backpropagates the error from the last forward pass and updates weights and biases in place.
->>>>>>> 2e3b4ef (Added numpy compution into file NeuralNetworkNumpy.py)
 
 | Parameter       | Type        | Description                             |
 | --------------- | ----------- | --------------------------------------- |
 | `answers`       | list[float] | Expected answers, one per output neuron |
 | `learning_rate` | float       | Learning rate                           |
-<<<<<<< HEAD
-  
-=======
->>>>>>> 2e3b4ef (Added numpy compution into file NeuralNetworkNumpy.py)
+
 `answers`: length must match `output_size`
 returns `None`,  updates weights and biases in place.
 
@@ -182,16 +160,9 @@ returns `None`,  updates weights and biases in place.
 >[!WARNING]
 >`Forward` must be called before `Backward`. It uses the cached values from the last forward pass.
 
-<<<<<<< HEAD
 ## License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
 [^1]: If not working use this link [[#Data format]]
 [^2]: If not working use this link [[#Constructor]]
-=======
-
----
-[^1]: If not working use this link [[#Data format]]
-[^2]: If not working use this link [[#Constructor]]
->>>>>>> 2e3b4ef (Added numpy compution into file NeuralNetworkNumpy.py)
