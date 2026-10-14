@@ -160,6 +160,10 @@ returns `None`,  updates weights and biases in place.
 >[!WARNING]
 >`Forward` must be called before `Backward`. It uses the cached values from the last forward pass.
 
+>[!NOTE]
+>You can use `import NeuralNetworkNumpy` instead of `import NeuralNetwork`. Methods do not change.
+>Only the processing is done by numpy (runs in C underneath — much faster).
+
 ## License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
