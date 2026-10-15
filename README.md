@@ -7,13 +7,14 @@ No dependencies -- pure Python.
 
 ## Quick Start
 
-First clone this repository or download the `NeuralNetwork.py` file and put it alongside your code.  
+First clone this repository or download the code files and put it alongside your code.  
 Your project must look like this :
 
 ```text
 
 My-Project
 ├── NeuralNetwork.py
+├── NeuralNetworkNumpy.py
 ├── Your_Code.py
 └── ---Your-Other-Files---
 
