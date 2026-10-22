@@ -128,12 +128,12 @@ class Neural_Network() :
             self.weights[layer-1] -= self.lr * np.outer(self.deltas[layer], self.last_a[layer-1])
             self.biases[layer-1] -= self.lr * self.deltas[layer]
             
-    def Train(self, data, epoches, lr) :
+    def Train(self, data, epochs, lr) :
         """
         data : [[case1: [input1, input2, ...], [expected_outputs]], [case2], ...]
         """
         
-        for e in range(epoches) :
+        for e in range(epochs) :
             for c in data :
                 inputs, outputs = c
                 self.Forward(inputs)

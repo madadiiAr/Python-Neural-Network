@@ -1,10 +1,34 @@
-# Python-Neural-Network
+# Python & Cpp Neural Network
 
-## About
+### About
 
-A Neural Network written in Python.
-No dependencies -- pure Python.
-## Quick Start
+A Neural Network written in Python and Cpp.
+No dependencies -- pure Python and Standard Cpp.
+
+## Technical Info
+
+### Activation
+
+You have 7 activation methods to choose from. Pass one to `activation` parameter of `Neural_Network`.
+
+| Name       | Formula                         | Range        |
+| ---------- | ------------------------------- | ------------ |
+| Sigmoid    | $1/(1+e^{-x})$                  | $(0, 1)$     |
+| Tanh       | $(e^x - e^{-x})/(e^x + e^{-x})$ | $(-1, 1)$    |
+| ReLU       | $max(0, x)$                     | $[0, ∞)$     |
+| Leaky-ReLU | $\alpha x+(1-\alpha)max(x,0)$   | $(-∞, ∞)$    |
+| Soft-Plus  | $ln(1+e^x)$                     | $(0, ∞)$     |
+| Linear     | $x$                             | $(-∞, ∞)$    |
+| Silu       | $x\cdot \sigma(x)$              | $(-0.28, ∞)$ |
+
+>[!Note]
+>The `activation` parameter of `Neural_Network` is Case-Insensitive.  
+> `(` or `)` — the value is not included  
+> `[` or `]` — the value is included  
+> `∞` is always open on its side.  
+
+## Python Version
+### Quick Start
 
 First clone this repository or download the code files and put them alongside your code.  
 Your project must look like this :
@@ -35,7 +59,7 @@ if __name__ == "__main__":
 	]
 
 	nn = Neural_Network(2, [5, 5], 1, activation="leaky-relu")
-	nn.Train(TABLE, epoches=300000, lr=0.05)
+	nn.Train(TABLE, epochs=300000, lr=0.05)
 
 	print("--- predictions ---")
 	for inp, target in TABLE:
@@ -54,7 +78,7 @@ input [1, 1]  target 0  output 0.0000
   
 ```
 
-## Data format
+### Data format
 
 `TABLE` is a list of `(inputs, targets)` tuples. Each tuple is one case.
 + `inputs` is a list of numbers — one per network input
@@ -68,31 +92,9 @@ TABLE = [
 	([1, 1], [0])    # input [1, 1]  ->  target [0]
 ]
 ```
+### API
 
-## Activation
-
-You have 7 activation methods to choose from. Pass one to `activation` parameter of `Neural_Network`.
-
-| Name       | Formula                         | Range        |
-| ---------- | ------------------------------- | ------------ |
-| Sigmoid    | $1/(1+e^{-x})$                  | $(0, 1)$     |
-| Tanh       | $(e^x - e^{-x})/(e^x + e^{-x})$ | $(-1, 1)$    |
-| ReLU       | $max(0, x)$                     | $[0, ∞)$     |
-| Leaky-ReLU | $\alpha x+(1-\alpha)max(x,0)$   | $(-∞, ∞)$    |
-| Soft-Plus  | $ln(1+e^x)$                     | $(0, ∞)$     |
-| Linear     | $x$                             | $(-∞, ∞)$    |
-| Silu       | $x\cdot \sigma(x)$              | $(-0.28, ∞)$ |
-
->[!Note]
->The `activation` parameter of `Neural_Network` is Case-Insensitive.  
-> `(` or `)` — the value is not included  
-> `[` or `]` — the value is included  
-> `∞` is always open on its side.  
-
-
-## API
-
-### Constructor
+#### Constructor
 
 `Neural_Network(...)` — Creates a neural network.
 
@@ -115,20 +117,20 @@ nn = Neural_Network(2, [5, 4, 3], 1)
 `alpha`:
 - Only applies if `activation="Leaky-ReLU"`.
 
-### .Train(...)
+#### .Train(...)
 
 Trains the network on the given data.
 
 | Parameter       | Type                    | Description                         |
 | --------------- | ----------------------- | ----------------------------------- |
 | `data`          | list[(inputs, targets)] | Table to train on                   |
-| `epoches`       | int                     | Number of full passes over the data |
+| `epochs`        | int                     | Number of full passes over the data |
 | `learning_rate` | float                   | Learning rate                       |
 
 >[!NOTE]
 >`data`: see [Data Format](#data-format) section.[^1]
 
-### .Forward(...)
+#### .Forward(...)
 
 Moves inputs across network and returns the results.
 
@@ -142,7 +144,7 @@ Returns a list[float] with the length equal to `output_size`
 >[!NOTE]
 >`input_size`, `output_size`: see [Constructor](#constructor) section[^2].
 
-### .Backward(...)
+#### .Backward(...)
 
 Backpropagates the error from the last forward pass and updates weights and biases in place.
 
@@ -164,7 +166,40 @@ returns `None`,  updates weights and biases in place.
 >You can use `import NeuralNetworkNumpy` instead of `import NeuralNetwork`. Methods do not change.
 >Only the processing is done by numpy (runs in C underneath — much faster).
 
-## License
+## Cpp Version
+### Info
+Currently only supports `sigmoid` activation. No need to tell the activation.
+### Quick Start
+
+To compile and run the C++ version, use `g++`. 
+Make sure all code is in a single file (e.g., `NeuralNetwork.cpp`).
+Replace `Filename.cpp` with your file name.
+
+```bash
+g++ Filename.cpp -o neural
+./neural
+```
+
+### Example Code
+
+Open the `NeuralNetwork.cpp` file. You can both clone the repo or download the file manually.
+Edit the `table` definition to match your need. Then run the code.
+### Data format
+
+`TABLE` is a list of `(inputs, targets)` tuples. Each tuple is one case.
++ `inputs` is a list of numbers — one per network input
++ `targets` is a list of numbers — one per network output
+
+```cpp
+std::vector<std::vector<std::vector<double>>> TABLE = {
+	{{0.0, 0.0}, {0.0}},   // input [0, 0]  ->  target [0]
+	{{0.0, 1.0}, {1.0}},   // input [0, 1]  ->  target [1]
+	{{1.0, 0.0}, {1.0}},   // input [1, 0]  ->  target [1]
+	{{1.0, 1.0}, {0.0}}    // input [1, 1]  ->  target [0]
+};
+```
+
+# License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
