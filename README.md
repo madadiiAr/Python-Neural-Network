@@ -6,13 +6,14 @@ A Neural Network written in Python.
 No dependencies -- pure Python.
 ## Quick Start
 
-First clone this repository or download the `NeuralNetwork.py` file and put it alongside your code.  
+First clone this repository or download the code files and put them alongside your code.  
 Your project must look like this :
 
-```
+```text
 
 My-Project
 ├── NeuralNetwork.py
+├── NeuralNetworkNumpy.py
 ├── Your_Code.py
 └── ---Your-Other-Files---
 
@@ -158,6 +159,10 @@ returns `None`,  updates weights and biases in place.
 
 >[!WARNING]
 >`Forward` must be called before `Backward`. It uses the cached values from the last forward pass.
+
+>[!NOTE]
+>You can use `import NeuralNetworkNumpy` instead of `import NeuralNetwork`. Methods do not change.
+>Only the processing is done by numpy (runs in C underneath — much faster).
 
 ## License
 
