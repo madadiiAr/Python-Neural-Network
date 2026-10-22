@@ -11,15 +11,18 @@ No dependencies -- pure Python and Standard Cpp.
 
 You have 7 activation methods to choose from. Pass one to `activation` parameter of `Neural_Network`.
 
-| Name       | Formula                         | Range        |
-| ---------- | ------------------------------- | ------------ |
-| Sigmoid    | $1/(1+e^{-x})$                  | $(0, 1)$     |
-| Tanh       | $(e^x - e^{-x})/(e^x + e^{-x})$ | $(-1, 1)$    |
-| ReLU       | $max(0, x)$                     | $[0, ∞)$     |
-| Leaky-ReLU | $\alpha x+(1-\alpha)max(x,0)$   | $(-∞, ∞)$    |
-| Soft-Plus  | $ln(1+e^x)$                     | $(0, ∞)$     |
-| Linear     | $x$                             | $(-∞, ∞)$    |
-| Silu       | $x\cdot \sigma(x)$              | $(-0.28, ∞)$ |
+| Name       | Activation                      | Derivative                                                                                   | Range        |
+| ---------- | ------------------------------- | -------------------------------------------------------------------------------------------- | ------------ |
+| Sigmoid    | $1/(1+e^{-x})$                  | $a(1-a)$                                                                                     | $(0, 1)$     |
+| Tanh       | $(e^x - e^{-x})/(e^x + e^{-x})$ | $1-a^2$                                                                                      | $(-1, 1)$    |
+| ReLU       | $max(0, x)$                     | $$<br>\begin{cases}<br>   1 &\text{if }x>0 \\<br>   0 &\text{if }x<=0<br>\end{cases}<br>$$   | $[0, ∞)$     |
+| Leaky-ReLU | $\alpha x+(1-\alpha)max(x,0)$   | $$<br>\begin{cases}<br>1 &\text{if } x>0 \\<br>\alpha &\text{if } x<= 0<br>\end{cases}<br>$$ | $(-∞, ∞)$    |
+| Soft-Plus  | $ln(1+e^x)$                     | $\cfrac{1}{1+e^{-x}}$                                                                        | $(0, ∞)$     |
+| Linear     | $x$                             | $1$                                                                                          | $(-∞, ∞)$    |
+| Silu       | $x\cdot \sigma(x)$              | $\sigma(x) + x\sigma(x)(1-\sigma(x))$                                                        | $(-0.28, ∞)$ |
+
+>[!Note]
+> In the derivative column, **`a`** is the output of the activation function, and **`α`** (alpha) is the negative slope parameter.
 
 >[!Note]
 >The `activation` parameter of `Neural_Network` is Case-Insensitive.  
@@ -168,7 +171,9 @@ returns `None`,  updates weights and biases in place.
 
 ## Cpp Version
 ### Info
-Currently only supports `sigmoid` activation. No need to tell the activation.
+
+`NeuralNetwork` takes `input_size`, `hiddens_size`, `output_size`, `activation` and `alpha`.
+`alpha` is just used by `Leaky_ReLU` activation method. 
 ### Quick Start
 
 To compile and run the C++ version, use `g++`. 
