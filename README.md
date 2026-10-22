@@ -11,15 +11,15 @@ No dependencies -- pure Python and Standard Cpp.
 
 You have 7 activation methods to choose from. Pass one to `activation` parameter of `Neural_Network`.
 
-| Name       | Activation                      | Derivative                                                         | Range        |
-| ---------- | ------------------------------- | ------------------------------------------------------------------ | ------------ |
-| Sigmoid    | $1/(1+e^{-x})$                  | $a(1-a)$                                                           | $(0, 1)$     |
-| Tanh       | $(e^x - e^{-x})/(e^x + e^{-x})$ | $1-a^2$                                                            | $(-1, 1)$    |
-| ReLU       | $max(0, x)$                     | $f'(x) = \begin{cases} 1 & x > 0 \\ 0 & x \le 0 \end{cases}$       | $[0, ∞)$     |
-| Leaky-ReLU | $\alpha x+(1-\alpha)max(x,0)$   |  $f'(x) = \begin{cases} 1 & x > 0 \\ \alpha & x \le 0 \end{cases}$ | $(-∞, ∞)$    |
-| Soft-Plus  | $ln(1+e^x)$                     | $\cfrac{1}{1+e^{-x}}$                                              | $(0, ∞)$     |
-| Linear     | $x$                             | $1$                                                                | $(-∞, ∞)$    |
-| Silu       | $x\cdot \sigma(x)$              | $\sigma(x) + x\sigma(x)(1-\sigma(x))$                              | $(-0.28, ∞)$ |
+| Name       | Activation                      | Derivative                                | Range        |
+| ---------- | ------------------------------- | ----------------------------------------- | ------------ |
+| Sigmoid    | $1/(1+e^{-x})$                  | $a(1-a)$                                  | $(0, 1)$     |
+| Tanh       | $(e^x - e^{-x})/(e^x + e^{-x})$ | $1-a^2$                                   | $(-1, 1)$    |
+| ReLU       | $max(0, x)$                     | $1 \text{ if } x>0 \text{, else } 0$      | $[0, ∞)$     |
+| Leaky-ReLU | $\alpha x+(1-\alpha)max(x,0)$   | $1 \text{ if } x>0 \text{, else } \alpha$ | $(-∞, ∞)$    |
+| Soft-Plus  | $ln(1+e^x)$                     | $\cfrac{1}{1+e^{-x}}$                     | $(0, ∞)$     |
+| Linear     | $x$                             | $1$                                       | $(-∞, ∞)$    |
+| Silu       | $x\cdot \sigma(x)$              | $\sigma(x) + x\sigma(x)(1-\sigma(x))$     | $(-0.28, ∞)$ |
 
 >[!Note]
 > In the derivative column, **`a`** is the output of the activation function, and **`α`** (alpha) is the negative slope parameter.
